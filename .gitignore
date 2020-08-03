@@ -1,0 +1,6 @@
+ngrok
+__pycache__/
+models/
+checkpoint_run1.tar
+.DS_Store/
+checkpoint/run1/model-150.data-00000-of-00001
