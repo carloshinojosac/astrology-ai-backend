@@ -4,6 +4,9 @@ from helper import adjectives, prefixes
 import gpt_2_simple as gpt2
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
+import tensorflow as tf
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 origins = [
     "http://localhost",
     "http://localhost:3000",
