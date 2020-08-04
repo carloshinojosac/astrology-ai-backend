@@ -1,5 +1,7 @@
+import os
 import re
 import random
+import uvicorn
 from helper import adjectives, prefixes
 import gpt_2_simple as gpt2
 from fastapi import FastAPI
@@ -8,6 +10,8 @@ import os
 import tensorflow as tf
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 origins = [
+    "https://ericklarac.github.io",
+    "https://aa8de9e130a7.ngrok.io",
     "http://localhost",
     "http://localhost:3000",
 ]
@@ -33,6 +37,11 @@ def getPrefix(zodiac_sign, interest):
     return s.format(zodiac_sign, adjective)
 
 
+@app.get("/")
+def read_root():
+    return {"text": "Astrology AI"}
+
+
 @app.get("/{zodiac_sign}/{interest}")
 async def get_zodiac_sign(zodiac_sign: str = "", interest: str = "careful"):
     prefix = getPrefix(zodiac_sign, interest)
@@ -41,3 +50,7 @@ async def get_zodiac_sign(zodiac_sign: str = "", interest: str = "careful"):
     text = re.sub(r'\\n', ' ', text)
     text = text[:text.rfind(".")+1]
     return {"text": text}
+
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=os.environ.get('PORT', 8000))
