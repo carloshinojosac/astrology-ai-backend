@@ -41,7 +41,7 @@ prefixes = {
                   "The professional life of {} is often {}",
                   "{} {} approach to work"
                   ],
-    "Future": ["The future for {} is {} "
+    "Future": ["The future for {} is {}",
                "This week, {} are {}",
                "{} are usually {}"
                ],
