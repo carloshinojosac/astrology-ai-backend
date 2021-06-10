@@ -1,4 +1,4 @@
-fastapi==0.54.1
+fastapi==0.65.2
 gpt-2-simple==0.7.1
 uvicorn==0.11.5
 tensorflow==1.15.2
